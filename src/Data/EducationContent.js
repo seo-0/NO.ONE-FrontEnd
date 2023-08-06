@@ -28,12 +28,14 @@ export const educationListState = atom({
       category: "송금하기",
       company: "토스",
       title: "토스 어플 다운받아 카드 등록하기",
+      deadline: "2023-08-10 23:00:00",
       logo: "https://mobiinsidecontent.s3.ap-northeast-2.amazonaws.com/kr/wp-content/uploads/2020/11/10114744/BI_L.png",
     },
     {
       id: 5,
       company: "배달의 민족",
       title: "배달의 민족 어플로 배달 주문 시켜 먹는 방법",
+      deadline: "2023-08-10 23:00:00",
       logo: "https://www.dailypop.kr/news/photo/201810/35546_58614_2549.jpg",
     },
     {
@@ -48,6 +50,7 @@ export const educationListState = atom({
       category: "공공서비스",
       company: "국민은행",
       title: "공인 인증서 발급 받기",
+      deadline: "2023-08-10 23:00:00",
       logo: "https://beautifulfund.org/wp-content/uploads/2017/09/fund_9_1.jpg",
     },
     {
@@ -55,6 +58,7 @@ export const educationListState = atom({
       category: "송금하기",
       company: "토스",
       title: "토스 어플 다운받아 카드 등록하기",
+      deadline: "2023-08-10 23:00:00",
       logo: "https://mobiinsidecontent.s3.ap-northeast-2.amazonaws.com/kr/wp-content/uploads/2020/11/10114744/BI_L.png",
     },
   ],
