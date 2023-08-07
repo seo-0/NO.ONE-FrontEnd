@@ -1,8 +1,8 @@
-// LoginModal.js
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { loginModalState, signUpModalState } from './state';
 import "../../styles/LoginPage/LoginModal.scss";
+
 
 function LoginModal() {
   const [showLoginModal, setShowLoginModal] = useRecoilState(loginModalState);
