@@ -4,24 +4,21 @@ import Footer from "./components/Footer";
 import MainApp from "./pages/MainPage/MainApp";
 import SearchApp from "./pages/SearchPage/SearchApp";
 import { RecoilRoot } from "recoil";
+import LoginModal from "./pages/LoginPage/LoginModal";
+import SignUpModal from "./pages/LoginPage/SignUpModal";
 
 function App() {
   return (
-    <div>
+    <RecoilRoot>
       <Header />
+      <LoginModal />
+      <SignUpModal />
       <Routes>
         <Route path="/" element={<MainApp />} />
-        <Route
-          path="/search"
-          element={
-            <RecoilRoot>
-              <SearchApp />
-            </RecoilRoot>
-          }
-        />
+        <Route path="/search" element={<SearchApp />} />
       </Routes>
       <Footer />
-    </div>
+    </RecoilRoot>
   );
 }
 

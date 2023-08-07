@@ -1,0 +1,110 @@
+.modal {
+  position: fixed;
+  z-index: 9999; //항상 모든 창보다 우선순위 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 2em;
+  width: 500px;
+  height: 500px;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+  h2{
+    font-size: larger;
+  }           
+}
+
+.modal form { //이메일~회원이아니라면까지
+  display: flex;
+  width: 500px; // Modal width와 동일하게 조정
+  height: 400px; // Height 조정
+  flex-direction: column;
+  align-items: center; // 내용을 중앙에 배치
+
+  p{
+    font-size: 14px;
+    color: rgb(95, 95, 95);
+    text-align: center;
+    margin-bottom: 10px; // 마진 조정
+  }
+  span{ //회원가입 버튼
+    font-weight: bold;
+    font-size: 15px;
+    justify-content: center;
+    margin: 3px;
+    text-align: center;
+  }
+}
+
+.modal form input { //이메일, 비번 박스
+  width: 90%; // Width 조정
+  background-color: aliceblue;
+  margin-bottom: 1em;
+  border: #000000 3px;
+}
+
+.modal form button { //로그인 버튼
+  width: 90%; // Width 조정
+  height: 70px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: 17px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background-color: #00008b;
+  color: white;
+}
+
+.modal-close-button {
+  background:none;
+  cursor: pointer;
+  position: absolute;
+  font-size: 15px;
+  border: #00008b 2px;
+  top: 0.5em;
+  right: 0.5em;
+}
+
+.or-separator {
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin-top: 10px; // 마진 조정
+  color: gray;
+}
+
+.or-separator span {
+  font-size: 13px;
+  color: rgb(82, 82, 82);
+  background:#fff; 
+  padding:0 10px; 
+}
+
+.social-login {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 13px;
+  border-radius: 7px;
+  border: none;
+  color: black;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.google {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background-color: #4286f4ca;
+}
+
+.naver {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background-color: #10eb31d6;
+}
+
+.kakao{
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background-color: #ffea00ef;
+}
