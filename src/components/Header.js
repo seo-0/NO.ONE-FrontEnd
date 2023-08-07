@@ -1,10 +1,13 @@
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../styles/components/Header.scss";
+import { useSetRecoilState } from 'recoil';
+import { loginModalState } from '../pages/LoginPage/state';
 
 const Header = () => {
   const location = useLocation();
   const showInputBox = location.pathname !== "/";
+  const setLoginModalShow = useSetRecoilState(loginModalState);
 
   const [searchKeyword, SetSearchKeyword] = useState("");
   const navigate = useNavigate();
@@ -50,13 +53,13 @@ const Header = () => {
         <div className="header-menu-bottom">
           <ul>
             <li>전체보기</li>
-            <li>문의글 작성</li>
+            <li><Link to="/QaPage">문의글 작성</Link></li>
             <li>컨텐츠 작성</li>
             <li>포인트</li>
           </ul>
           <ul>
             <li>사용자님</li> {/* 로그인 api 연동시 삭제 예정 */}
-            <li>로그인</li>
+            <li onClick={() => setLoginModalShow(true)}>로그인</li>
           </ul>
         </div>
       </div>

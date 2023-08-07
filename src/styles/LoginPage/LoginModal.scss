@@ -1,0 +1,143 @@
+.modal {
+  position: fixed;
+  z-index: 9999; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 2em;
+  width: 500px;
+  height: 500px;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+
+  h2 {
+    font-size: larger;
+  }           
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  width: 100%; 
+  align-items: center; 
+
+  p {
+    font-size: 14px;
+    color: rgb(95, 95, 95);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  span {
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 5px;
+
+    &:hover {
+      color: #0000ff; 
+    }
+  }
+}
+
+.modal form input {
+  width: 90%;
+  background-color: aliceblue;
+  margin-bottom: 1em;
+  border: #000000 3px;
+}
+
+.modal form button {
+  width: 90%;
+  height: 70px;
+  cursor: pointer;
+  border-radius: 7px;
+  font-size: 17px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background-color: #00008b;
+  color: white;
+}
+
+.modal-close-button {
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  font-size: 15px;
+  border: #00008b 2px;
+  top: 0.5em;
+  right: 0.5em;
+
+  &:hover {
+    color: #0000ff;
+  }
+}
+
+.or-separator {
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 20px 0; 
+  color: gray;
+}
+
+.or-separator span {
+  font-size: 13px;
+  color: rgb(82, 82, 82);
+  background: #fff; 
+  padding: 0 10px; 
+}
+
+.social-login {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 13px;
+  border-radius: 7px;
+  border: none;
+  color: black;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.google {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  background-image: url('../../pages/LoginPage/socialLoginImg/google.png');
+  background-position: 5px center;
+  background-repeat: no-repeat;
+  background-size: 33px;
+  
+  &:hover {
+    background-color: #0059ff71;
+  }
+}
+
+.naver {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  background-image: url('../../pages/LoginPage/socialLoginImg/naver.png');
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  background-size: 25px;
+
+  &:hover {
+    background-color: #00ff2a58;
+  }
+}
+
+.kakao {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  background-image: url('../../pages/LoginPage/socialLoginImg/kakao.png');
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  background-size: 42px;
+  
+
+  &:hover {
+    background-color: #edff2bb6;
+  }
+}
