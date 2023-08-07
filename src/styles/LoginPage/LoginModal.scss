@@ -32,10 +32,16 @@
   }
   span{ //회원가입 버튼
     font-weight: bold;
+    cursor: pointer;
     font-size: 15px;
     justify-content: center;
     margin: 3px;
     text-align: center;
+     &:hover {
+        color: #0000ff; // hover 상태일 때의 배경색
+    
+      }
+    
   }
 }
 
@@ -65,6 +71,10 @@
   border: #00008b 2px;
   top: 0.5em;
   right: 0.5em;
+  &:hover {
+    color: #0000ff; // hover 상태일 때의 배경색
+
+  }
 }
 
 .or-separator {
@@ -96,15 +106,27 @@
 
 .google {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  background-color: #4286f4ca;
+  background-color: #4286f4ca; 
+  &:hover {
+    background-color: #0059ff71; // hover 상태일 때의 배경색
+
+  }
 }
 
 .naver {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   background-color: #10eb31d6;
+  &:hover {
+    background-color: #00ff2a58; // hover 상태일 때의 배경색
+
+  }
 }
 
 .kakao{
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   background-color: #ffea00ef;
+  &:hover {
+    background-color: #edff2bb6; // hover 상태일 때의 배경색
+
+  }
 }

@@ -57,7 +57,6 @@ function SignUpModal() {
         <button onClick={handlePhoneVerification}>인증번호 받기</button>
       </div>
       <input type="text" name="verificationCode" placeholder="인증번호" onChange={handleChange} />
-
       {verificationCodeMatch ? <div style={{color: 'green'}}>인증이 완료되었습니다.</div> : <div style={{color: 'red'}}>인증번호가 일치하지 않습니다.</div>}
       <button type="submit">회원가입</button>
 

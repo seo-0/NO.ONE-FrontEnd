@@ -1,6 +1,6 @@
 .modal {
   position: fixed;
-  z-index: 9999; // Always at the top
+  z-index: 9999; 
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -23,7 +23,8 @@
   width: 600px;
   height: 500px;
 
-  input {
+  input { //이메일, 비밀번호, 비밀번호 확인, 인증번호
+    padding-left: 10px;
     height: 50px;
     width: 100%;
     background-color: rgba(128, 128, 128, 0.144);
@@ -32,21 +33,16 @@
   }
 
   .phone-verification {
-    display: flex;
-    justify-content: space-between;
+    display: flex; // 가로 배치
+    flex-direction: row;
+    width: 102%; // 전체 너비를 차지하도록
     
-    input[type="tel"] {
-      flex-grow: 2; // Larger input for phone number
+    input {
+      margin-right: 10px; // 오른쪽에 약간의 공간을 남김
     }
-
-    button { //인증번호받기 버튼
-      flex-grow: 1; // Smaller for verification button
-      cursor: pointer;
-      margin-left: 10px;
+    
+    button {
       height: 53px;
-      border-radius: 7px;
-      background-color: #00008b;
-      color: white;
     }
   }
   

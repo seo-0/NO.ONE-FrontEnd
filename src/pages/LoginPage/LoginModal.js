@@ -27,8 +27,8 @@ function LoginModal() {
       <button className="modal-close-button" onClick={() => setShowLoginModal(false)}>닫기</button>
       <h2>로그인 및 회원가입</h2>
       <form onSubmit={handleSubmit}>
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+        <input type="email" name="email" placeholder="이메일" onChange={handleChange} />
+        <input type="password" name="password" placeholder="비밀번호" onChange={handleChange} />
         <button type="submit">계속</button>
         <p>아직 회원이 아니라면? <span onClick={() => { setShowLoginModal(false); setShowSignUpModal(true); }}>회원가입</span></p>
       </form>
