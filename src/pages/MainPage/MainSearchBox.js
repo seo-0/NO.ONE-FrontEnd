@@ -1,11 +1,31 @@
 // 메인 페이지에 검색창을 출력하는 컴포넌트
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/MainPage/MainSearchBox.scss";
 
 const MainSearchBox = () => {
+  const [searchKeyword, SetSearchKeyword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchBoxChange = (e) => {
+    SetSearchKeyword(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (searchKeyword.trim() !== "") {
+      navigate(`/search?q=${encodeURIComponent(searchKeyword)}`);
+    }
+  };
+
   return (
     <div>
-      <form className="main-search-box">
-        <input type="text" placeholder="도움이 필요하면 무엇이든 검색하세요!" />
+      <form className="main-search-box" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="도움이 필요하면 무엇이든 검색하세요!"
+          onChange={handleSearchBoxChange}
+        />
         <button type="submit">
           <svg
             xmlns="http://www.w3.org/2000/svg"

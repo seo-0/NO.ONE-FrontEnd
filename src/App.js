@@ -2,7 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MainApp from "./pages/MainPage/MainApp";
-import DetailApp from "./pages/DetailPage/DetailApp";
+import SearchApp from "./pages/SearchPage/SearchApp";
+import { RecoilRoot } from "recoil";
 
 function App() {
   return (
@@ -10,7 +11,14 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainApp />} />
-        <Route path="/detail" element={<DetailApp />} />
+        <Route
+          path="/search"
+          element={
+            <RecoilRoot>
+              <SearchApp />
+            </RecoilRoot>
+          }
+        />
       </Routes>
       <Footer />
     </div>
