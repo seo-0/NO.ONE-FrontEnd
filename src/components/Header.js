@@ -1,8 +1,14 @@
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import styled from "styled-components";
 import "../styles/components/Header.scss";
-import { useSetRecoilState } from 'recoil';
-import { loginModalState } from '../pages/LoginPage/state';
+import { useSetRecoilState } from "recoil";
+import { loginModalState } from "../pages/LoginPage/state";
+
+const StyledLink = styled(Link)`
+  text-decoration-line: none;
+  color: #000000;
+`;
 
 const Header = () => {
   const location = useLocation();
@@ -53,12 +59,16 @@ const Header = () => {
         <div className="header-menu-bottom">
           <ul>
             <li>전체보기</li>
-            <li><Link to="/QaPage">문의글 작성</Link></li>
+            <li>
+              <Link to="/QaPage">문의글 작성</Link>
+            </li>
             <li>컨텐츠 작성</li>
             <li>포인트</li>
           </ul>
           <ul>
-            <li>사용자님</li> {/* 로그인 api 연동시 삭제 예정 */}
+            <StyledLink to="/mypage">
+              <li>사용자님</li> {/* 로그인 api 연동시 삭제 예정 */}
+            </StyledLink>
             <li onClick={() => setLoginModalShow(true)}>로그인</li>
           </ul>
         </div>
