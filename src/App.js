@@ -6,7 +6,6 @@ import SearchApp from "./pages/SearchPage/SearchApp";
 import LoginModal from "./pages/LoginPage/LoginModal";
 import SignUpModal from "./pages/LoginPage/SignUpModal";
 import QaPage from "./pages/Q&aPage/QaPage";
-
 import MyPageApp from "./pages/MyPage/MyPageApp";
 import { RecoilRoot } from "recoil";
 
