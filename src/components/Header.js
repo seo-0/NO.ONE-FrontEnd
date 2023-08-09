@@ -60,7 +60,7 @@ const Header = () => {
           <ul>
             <li>전체보기</li>
             <li>
-              <Link to="/QaPage">문의글 작성</Link>
+              <StyledLink to="/QaPage">문의글 작성</StyledLink>
             </li>
             <li>컨텐츠 작성</li>
             <li>포인트</li>
