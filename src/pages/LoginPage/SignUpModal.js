@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { signUpModalState } from "./state";
 import "../../styles/LoginPage/SignUpModal.scss";
+import axios from "axios";
+
 
 function SignUpModal() {
   const [showModal, setShowModal] = useRecoilState(signUpModalState);
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
+    name: "",
     passwordConfirm: "",
-    phoneNumber: "",
+    phone: "",
     verificationCode: "",
   });
   const [passwordMatch, setPasswordMatch] = useState(false);
@@ -34,16 +37,56 @@ function SignUpModal() {
     // 여기서 전화번호로 인증번호를 보내는 API 호출을 수행합니다.
     console.log("인증번호가 전송되었습니다.");
   };
-  const handleSubmit = (e) => {
+
+  // useEffect(() => {
+  //   // Axios를 사용하여 GET 요청 보내기
+  //   axios.get('http://13.209.49.229:8080/user/signup')
+  //     .then(response => {
+  //       console.log(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching data:', error);
+        
+  //     });
+  // }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    //비밀번호 일치 여부 검사
     if (!passwordMatch) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
+    } //인증번호 일치 여부 검사(임의)
+    if (!verificationCodeMatch) {
+      alert("인증번호가 일치하지 않습니다.");
+      return;
     }
-    // 회원가입 로직을 여기에 추가하세요.
+    try {
+      const response = await axios.post("http://13.209.49.229:8080/user/signup", credentials);
+      // 응답을 처리하는 코드
+      console.log("성공적으로 회원가입이 완료되었습니다.:", response.data);
+      alert("성공적으로 회원가입이 완료되었습니다.:", response.data);
+    } catch (error) {
+      if (error.response) {
+        // 서버에서 응답을 받았으나, 2xx의 상태 코드를 받지 못한 경우
+        alert(error.response.data.message || "회원가입에 실패했습니다. 다시 시도하세요.");
+        console.log(error);
+        console.log(credentials);
+      } 
+      else if (error.request) {
+        // 요청을 보냈지만, 응답을 받지 못한 경우
+        alert("서버로부터 응답이 없습니다. 다시 시도하세요.");
+        console.log(credentials);
+        console.error(error);
+      } 
+      else {
+        // 요청 설정 중 오류 발생 혹은 기타 어떠한 이유로 요청이 설정되지 않은 경우
+        alert("요청을 보내는 중에 오류가 발생했습니다.");
+      }
+    }
   };
 
-  if (!showModal) {
+  if(!showModal){
     return null;
   }
 
@@ -112,7 +155,7 @@ function SignUpModal() {
           <div className="phone-verification">
             <input
               type="tel"
-              name="phoneNumber"
+              name="phone"
               placeholder="전화번호"
               onChange={handleChange}
             />

@@ -8,6 +8,9 @@ import { loginModalState } from "../pages/LoginPage/state";
 const StyledLink = styled(Link)`
   text-decoration-line: none;
   color: #000000;
+  &:hover {
+    color: #6868ff;
+  }
 `;
 
 const Header = () => {
@@ -58,6 +61,18 @@ const Header = () => {
         </div>
         <div className="header-menu-bottom">
           <ul>
+            <StyledLink to="/">
+              <li>전체보기</li>
+            </StyledLink>
+            <StyledLink to="/QaPage">
+              <li>문의글 작성</li>
+            </StyledLink>
+            <StyledLink to="/"> {/* 컨텐츠 페이지 경로 꼭 수정해서 넣어두기! */}
+              <li>컨텐츠 작성</li>
+            </StyledLink>
+            <StyledLink to="/mypage">
+              <li>포인트</li>
+            </StyledLink>
             <li>전체보기</li>
             <li>
               <StyledLink to="/QaPage">문의글 작성</StyledLink>
@@ -71,7 +86,9 @@ const Header = () => {
             <StyledLink to="/mypage">
               <li>사용자님</li> {/* 로그인 api 연동시 삭제 예정 */}
             </StyledLink>
-            <li onClick={() => setLoginModalShow(true)}>로그인</li>
+            <StyledLink to="/">
+              <li onClick={() => setLoginModalShow(true)}>로그인</li>
+            </StyledLink>
           </ul>
         </div>
       </div>
