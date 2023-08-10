@@ -62,7 +62,9 @@ const Header = () => {
             <li>
               <StyledLink to="/QaPage">문의글 작성</StyledLink>
             </li>
-            <li>컨텐츠 작성</li>
+            <StyledLink to="create-content">
+              <li>컨텐츠 작성</li>
+            </StyledLink>
             <li>포인트</li>
           </ul>
           <ul>
