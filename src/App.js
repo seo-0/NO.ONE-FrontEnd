@@ -7,6 +7,7 @@ import LoginModal from "./pages/LoginPage/LoginModal";
 import SignUpModal from "./pages/LoginPage/SignUpModal";
 import QaPage from "./pages/Q&aPage/QaPage";
 import MyPageApp from "./pages/MyPage/MyPageApp";
+import ContentApp from "./pages/ContentPage/ContentApp";
 import { RecoilRoot } from "recoil";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route path="/search" element={<SearchApp />} />
           <Route path="/QaPage" element={<QaPage />} />
           <Route path="/mypage/*" element={<MyPageApp />} />
+          <Route path="/create-content" element={<ContentApp />} />
         </Routes>
         <Footer />
       </div>
