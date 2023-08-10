@@ -24,7 +24,7 @@ function App() {
           <Route path="/search" element={<SearchApp />} />
           <Route path="/QaPage" element={<QaPage />} />
           <Route path="/mypage/*" element={<MyPageApp />} />
-          <Route path="/education/:postId" component={EducationContentPage} />
+          <Route path="/education-content-page/:id" element={<EducationContentPage />} />
           <Route path="/create-content" element={<ContentApp />} />
         </Routes>
         <Footer />
