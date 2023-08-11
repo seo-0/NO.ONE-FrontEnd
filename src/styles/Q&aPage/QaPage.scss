@@ -25,6 +25,9 @@
     display: block;
     font-size: large;
     font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   input {
@@ -32,9 +35,9 @@
     background-color: #f8f8f8;
 
     &[type="text"] {
-      margin: 15px 0px 25px 20px;
-      width: 80%;
-      height: 35px;
+      margin: 15px 0px 25px 0px;
+      width: 95%;
+      height: 50px;
       border-radius: 5px;
     }
 
@@ -49,7 +52,7 @@
     }
 
     &[type="checkbox"] {
-      margin: 0 0 0 510px;
+      // margin: 0 0 0 510px;
       width: 20px;
       height: 16px;
     }
@@ -90,7 +93,9 @@ h1 {
 h5 {
   text-align: center;
   color: #00008b;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .myask {
