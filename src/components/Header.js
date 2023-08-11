@@ -11,11 +11,15 @@ const StyledLink = styled(Link)`
   &:hover {
     color: #6868ff;
   }
+  &.selected {
+    color: #6868ff;
+  }
 `;
 
 const Header = () => {
   const location = useLocation();
   const showInputBox = location.pathname !== "/";
+  const currentPath = location.pathname.slice(1);
   const setLoginModalShow = useSetRecoilState(loginModalState);
 
   const [searchKeyword, SetSearchKeyword] = useState("");
@@ -60,21 +64,36 @@ const Header = () => {
           )}
         </div>
         <div className="header-menu-bottom">
-        <ul>
-            <li>전체보기</li>
+          <ul>
+            <StyledLink to="/" className={currentPath === "" ? "selected" : ""}>
+              <li>전체보기</li>
+            </StyledLink>
             <li>
-              <StyledLink to="/QaPage">문의글 작성</StyledLink>
+              <StyledLink
+                to="/QaPage"
+                className={currentPath === "QaPage" ? "selected" : ""}
+              >
+                문의글 작성
+              </StyledLink>
             </li>
-            <StyledLink to="create-content">
+            <StyledLink
+              to="create-content"
+              className={currentPath === "create-content" ? "selected" : ""}
+            >
               <li>컨텐츠 작성</li>
             </StyledLink>
             <li>포인트</li>
           </ul>
           <ul>
-            <StyledLink to="/mypage">
+            <StyledLink
+              to="/mypage"
+              className={currentPath === "mypage" ? "selected" : ""}
+            >
               <li>사용자님</li> {/* 로그인 api 연동시 삭제 예정 */}
             </StyledLink>
-            <StyledLink><li onClick={() => setLoginModalShow(true)}>로그인</li></StyledLink>
+            <StyledLink>
+              <li onClick={() => setLoginModalShow(true)}>로그인</li>
+            </StyledLink>
           </ul>
         </div>
       </div>
