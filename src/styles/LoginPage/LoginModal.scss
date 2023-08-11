@@ -26,7 +26,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 
   .modal-top {
-    border-bottom: 1px solid rgba(137, 137, 137, 0.6);
+    border-bottom: 1px solid #d0d0d0;
     margin-bottom: 20px;
     h2 {
       font-size: larger;
@@ -46,18 +46,18 @@
     font-size: 14px;
     color: rgb(95, 95, 95);
     text-align: center;
-    margin-bottom: 10px;
+    margin: 25px 0 10px 0;
   }
 
   span {
     font-weight: bold;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 14px;
     text-align: center;
     margin-bottom: 5px;
 
     &:hover {
-      color: #0000ff;
+      color: #00008b;
     }
   }
 }
@@ -102,15 +102,14 @@
 
 .or-separator {
   text-align: center;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #d0d0d0;
   line-height: 0.1em;
   margin: 20px 0;
-  color: gray;
 }
 
 .or-separator span {
   font-size: 13px;
-  color: rgb(82, 82, 82);
+  color: #b3b2b2;
   background: #fff;
   padding: 0 10px;
 }
@@ -125,18 +124,20 @@
   color: black;
   font-size: medium;
   cursor: pointer;
+  box-sizing: border-box;
 }
 
 .google {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   background-color: white;
   background-image: url("../../pages/LoginPage/socialLoginImg/google.png");
-  background-position: 6px ;
+  background-position: 6px;
   background-repeat: no-repeat;
   background-size: 33px;
-  
+
   &:hover {
-    background-color: #0059ff71;
+    // background-color: #0059ff71;
+    background-color: #f6f6f6;
   }
 }
 
@@ -149,7 +150,8 @@
   background-size: 25px;
 
   &:hover {
-    background-color: #00ff2a58;
+    // background-color: #00ff2a58;
+    background-color: #f6f6f6;
   }
 }
 
@@ -162,6 +164,7 @@
   background-size: 42px;
 
   &:hover {
-    background-color: #edff2bb6;
+    // background-color: #edff2bb6;
+    background-color: #f6f6f6;
   }
 }
