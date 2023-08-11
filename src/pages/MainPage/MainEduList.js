@@ -2,13 +2,14 @@ import { useRecoilState } from "recoil";
 import { educationListState } from "../../Data/EducationContent";
 import { useState, useEffect } from "react";
 import "../../styles/MainPage/MainEduList.scss";
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const MainEduList = ({ selectedCategory }) => {
   const [educationList] = useRecoilState(educationListState);
   const [selectedEducationList, setSelectedEducationList] =
     useState(educationList);
   const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (selectedCategory === "전체보기") {
@@ -31,6 +32,10 @@ const MainEduList = ({ selectedCategory }) => {
       (edu) => edu.title.toLowerCase().includes(searchText.toLowerCase()) // 검색어로 필터링
     );
     setSelectedEducationList(filteredData);
+  };
+
+  const goEduContent = (contentId) => {
+    navigate(`/education-content-page/${contentId}`);
   };
 
   return (
@@ -58,16 +63,17 @@ const MainEduList = ({ selectedCategory }) => {
         </div>
       </div>
       <div className="main-edu-list-container">
-      {selectedEducationList.map((content) => (
-        <Link to={`/education-content-page/${content.id}`} key={content.id}>
-          <div className="main-edu-content">
+        {selectedEducationList.map((content) => (
+          <div
+            className="main-edu-content"
+            onClick={() => goEduContent(content.id)}
+            key={content.id}
+          >
             <img src={content.logo} alt="logo" />
             <p>[ {content.company} ]</p>
             <p>{content.title}</p>
           </div>
-        </Link>
-      ))}
-
+        ))}
       </div>
     </div>
   );
