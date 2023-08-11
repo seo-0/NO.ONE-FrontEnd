@@ -19,7 +19,7 @@ function LoginModal() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://13.209.49.229:8080/user/login", credentials);
+      const response = await axios.post("http://13.209.49.229:8080/api/v1/user/login", credentials);
       
       console.log("성공적으로 로그인이 완료되었습니다.:", response.data);
       alert("성공적으로 로그인이 완료되었습니다.:", response.data);
