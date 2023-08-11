@@ -38,18 +38,6 @@ function SignUpModal() {
     console.log("인증번호가 전송되었습니다.");
   };
 
-  // useEffect(() => {
-  //   // Axios를 사용하여 GET 요청 보내기
-  //   axios.get('http://13.209.49.229:8080/user/signup')
-  //     .then(response => {
-  //       console.log(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching data:', error);
-        
-  //     });
-  // }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     //비밀번호 일치 여부 검사
@@ -62,7 +50,7 @@ function SignUpModal() {
       return;
     }
     try {
-      const response = await axios.post("http://13.209.49.229:8080/user/signup", credentials);
+      const response = await axios.post("http://13.209.49.229:8080/api/v1/user/signup", credentials);
       // 응답을 처리하는 코드
       console.log("성공적으로 회원가입이 완료되었습니다.:", response.data);
       alert("성공적으로 회원가입이 완료되었습니다.:", response.data);
