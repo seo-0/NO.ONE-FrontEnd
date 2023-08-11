@@ -4,7 +4,6 @@ import { signUpModalState } from "./state";
 import "../../styles/LoginPage/SignUpModal.scss";
 import axios from "axios";
 
-
 function SignUpModal() {
   const [showModal, setShowModal] = useRecoilState(signUpModalState);
   const [credentials, setCredentials] = useState({
@@ -46,7 +45,7 @@ function SignUpModal() {
   //     })
   //     .catch(error => {
   //       console.error('Error fetching data:', error);
-        
+
   //     });
   // }, []);
 
@@ -62,31 +61,35 @@ function SignUpModal() {
       return;
     }
     try {
-      const response = await axios.post("http://13.209.49.229:8080/user/signup", credentials);
+      const response = await axios.post(
+        "http://13.209.49.229:8080/user/signup",
+        credentials
+      );
       // 응답을 처리하는 코드
       console.log("성공적으로 회원가입이 완료되었습니다.:", response.data);
       alert("성공적으로 회원가입이 완료되었습니다.:", response.data);
     } catch (error) {
       if (error.response) {
         // 서버에서 응답을 받았으나, 2xx의 상태 코드를 받지 못한 경우
-        alert(error.response.data.message || "회원가입에 실패했습니다. 다시 시도하세요.");
+        alert(
+          error.response.data.message ||
+            "회원가입에 실패했습니다. 다시 시도하세요."
+        );
         console.log(error);
         console.log(credentials);
-      } 
-      else if (error.request) {
+      } else if (error.request) {
         // 요청을 보냈지만, 응답을 받지 못한 경우
         alert("서버로부터 응답이 없습니다. 다시 시도하세요.");
         console.log(credentials);
         console.error(error);
-      } 
-      else {
+      } else {
         // 요청 설정 중 오류 발생 혹은 기타 어떠한 이유로 요청이 설정되지 않은 경우
         alert("요청을 보내는 중에 오류가 발생했습니다.");
       }
     }
   };
 
-  if(!showModal){
+  if (!showModal) {
     return null;
   }
 
@@ -144,9 +147,11 @@ function SignUpModal() {
           />
           {credentials.password && credentials.passwordConfirm ? (
             passwordMatch ? (
-              <div style={{ color: "green" }}>✓ 비밀번호가 일치합니다.</div>
+              <div style={{ color: "green", marginBottom: "10px" }}>
+                ✓ 비밀번호가 일치합니다.
+              </div>
             ) : (
-              <div style={{ color: "red" }}>
+              <div style={{ color: "red", marginBottom: "10px" }}>
                 ✓ 비밀번호가 일치하지 않습니다.
               </div>
             )
