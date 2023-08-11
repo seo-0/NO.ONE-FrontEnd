@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useRecoilState } from "recoil";
 import { loginModalState, signUpModalState } from "./state";
 import "../../styles/LoginPage/LoginModal.scss";
+import axios from "axios";
+
 
 function LoginModal() {
   const [showLoginModal, setShowLoginModal] = useRecoilState(loginModalState);
@@ -13,14 +15,33 @@ function LoginModal() {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // 로그인 로직을 여기에 추가하세요.
-  };
 
-  if (!showLoginModal) {
-    return null;
+    try {
+      const response = await axios.post("http://13.209.49.229:8080/user/login", credentials);
+      
+      console.log("성공적으로 로그인이 완료되었습니다.:", response.data);
+      alert("성공적으로 로그인이 완료되었습니다.:", response.data);
+    } catch (error) {
+      if (error.response) {
+          // 서버에서 응답을 받았으나, 2xx의 상태 코드를 받지 못한 경우
+          alert(error.response.data.message || "로그인에 실패했습니다. 다시 시도하세요.");
+      } else if (error.request) {
+          // 요청을 보냈지만, 응답을 받지 못한 경우
+          alert("서버로부터 응답이 없습니다. 다시 시도하세요.");
+      } else {
+          // 요청 설정 중 오류 발생 혹은 기타 어떠한 이유로 요청이 설정되지 않은 경우
+          alert("요청을 보내는 중에 오류가 발생했습니다.");
+      }
   }
+
+      };
+
+      if(!showLoginModal){
+        return null;
+      }
+
 
   return (
     <div className="modal-wrapper">

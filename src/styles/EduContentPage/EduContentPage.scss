@@ -1,0 +1,65 @@
+.edu-container{
+    box-sizing: border-box;
+    max-width: 1064px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px 10px;
+}
+
+h3{
+    color: #00008B;
+}
+
+.image-count {
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+}
+
+.image-description {
+    font-size: large;
+    text-align: center;
+}
+
+
+.edu-img {
+    .image-description {
+        font-size: large;
+        text-align: center;
+    }
+    
+    border-radius: 15px;
+    border: 1px solid #D0D0D0;
+    background: #FFF;
+    max-width: 1064px;
+    margin: 20px auto;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    .content-image {
+        margin: 50px 0;
+        max-width: 400px;
+        height: auto;
+    }
+      
+    @media (max-width: 768px) {
+        .content-image {
+            max-width: 200px;
+        }
+    }
+    
+    .img-button{
+        background-color: white;
+        border: 1px solid white;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        margin: 0 80px;
+    }
+}

@@ -2,6 +2,7 @@ import { useRecoilState } from "recoil";
 import { educationListState } from "../../Data/EducationContent";
 import { useState, useEffect } from "react";
 import "../../styles/MainPage/MainEduList.scss";
+import { Link } from 'react-router-dom';
 
 const MainEduList = ({ selectedCategory }) => {
   const [educationList] = useRecoilState(educationListState);
@@ -57,13 +58,16 @@ const MainEduList = ({ selectedCategory }) => {
         </div>
       </div>
       <div className="main-edu-list-container">
-        {selectedEducationList.map((content) => (
-          <div key={content.id} className="main-edu-content">
+      {selectedEducationList.map((content) => (
+        <Link to={`/education-content-page/${content.id}`} key={content.id}>
+          <div className="main-edu-content">
             <img src={content.logo} alt="logo" />
             <p>[ {content.company} ]</p>
             <p>{content.title}</p>
           </div>
-        ))}
+        </Link>
+      ))}
+
       </div>
     </div>
   );
