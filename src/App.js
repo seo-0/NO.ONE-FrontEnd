@@ -10,12 +10,19 @@ import MyPageApp from "./pages/MyPage/MyPageApp";
 import EducationContentPage from "./pages/EduContentPage/EduContentPage";
 import ContentApp from "./pages/ContentPage/ContentApp";
 import { RecoilRoot } from "recoil";
+import styled from "styled-components";
 
+const Container = styled.div`
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 function App() {
   return (
     <RecoilRoot>
-      <div>
+      <Container>
         <Header />
         <LoginModal />
         <SignUpModal />
@@ -24,11 +31,14 @@ function App() {
           <Route path="/search" element={<SearchApp />} />
           <Route path="/QaPage" element={<QaPage />} />
           <Route path="/mypage/*" element={<MyPageApp />} />
-          <Route path="/education-content-page/:id" element={<EducationContentPage />} />
+          <Route
+            path="/education-content-page/:contentId"
+            element={<EducationContentPage />}
+          />
           <Route path="/create-content" element={<ContentApp />} />
         </Routes>
         <Footer />
-      </div>
+      </Container>
     </RecoilRoot>
   );
 }

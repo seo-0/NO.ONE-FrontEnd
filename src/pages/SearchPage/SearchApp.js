@@ -1,39 +1,29 @@
-import { useRecoilState } from "recoil";
-import { educationListState } from "../../Data/EducationContent";
+import axios from "axios";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../../styles/SearchPage/SearchApp.scss";
 
 const SearchApp = () => {
-  const [educationList] = useRecoilState(educationListState);
-  const [selectedEducationList, setSelectedEducationList] =
-    useState(educationList);
-
+  const [educationList, setEducationList] = useState([]);
+  const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const searchKeyword = searchParams.get("q");
 
   useEffect(() => {
-    if (searchKeyword && searchKeyword.trim() !== "") {
-      const filteredData = educationList.filter(
-        (edu) =>
-          edu.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
-          edu.company.toLowerCase().includes(searchKeyword.toLowerCase())
-      );
-      setSelectedEducationList(filteredData);
-    } else {
-      setSelectedEducationList(educationList);
-    }
-  }, [searchKeyword, educationList]);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `http://13.209.49.229:8080/api/v1/content/search?keyword=${searchKeyword}`
+        );
+        setEducationList(response.data.result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-  // 마감 시간이 있는 컨텐츠를 가장 먼저 출력하기 위해 정렬
-  useEffect(() => {
-    setSelectedEducationList((prevList) => {
-      const shortTermEvents = prevList.filter((item) => !!item.deadline);
-      const longTermEvents = prevList.filter((item) => !item.deadline);
-      return [...shortTermEvents, ...longTermEvents];
-    });
-  }, []);
+    fetchData();
+  }, [searchKeyword]);
 
   // 마감 시간까지 남은 시간을 계산하는 함수
   const getTimeRemaining = (deadline) => {
@@ -46,10 +36,14 @@ const SearchApp = () => {
     return { days, hours };
   };
 
+  const goEduContent = (contentId) => {
+    navigate(`/education-content-page/${contentId}`);
+  };
+
   return (
     <div className="search-page-container">
       <div className="search-info">
-        <p>검색 결과 약 {selectedEducationList.length}개</p>
+        <p>검색 결과 약 {educationList.length}개</p>
         <div>
           <h1>" {searchKeyword} " 검색 결과</h1>
           <form>
@@ -61,22 +55,23 @@ const SearchApp = () => {
         </div>
       </div>
       <div className="search-items">
-        {selectedEducationList.map((content) => (
+        {educationList.map((content) => (
           <div
-            key={content.id}
+            key={content.contentId}
+            onClick={() => goEduContent(content.contentId)}
             className={`search-edu-content ${
               !!content.deadline ? "event" : ""
             }`}
           >
-            <img src={content.logo} alt="logo" />
+            <img src={content.companyImg} alt="logo" />
             <div>
-              {!!content.deadline && <span className="event">단기 이벤트</span>}
-              <p className="content-company">[ {content.company} ]</p>
+              {!!content.deadLine && <span className="event">단기 이벤트</span>}
+              <p className="content-company">[ {content.companyName} ]</p>
               <p className="content-title">{content.title}</p>
-              {!!content.deadline && (
+              {!!content.deadLine && (
                 <span className="content-time">
-                  마감까지 약 {getTimeRemaining(content.deadline).days}일{" "}
-                  {getTimeRemaining(content.deadline).hours}시간 남음
+                  마감까지 약 {getTimeRemaining(content.deadLine).days}일{" "}
+                  {getTimeRemaining(content.deadLine).hours}시간 남음
                 </span>
               )}
               <span className="content-link">

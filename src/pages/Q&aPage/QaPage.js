@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../../styles/Q&aPage/QaPage.scss";
 import "../MyPage/MyAsk.js";
-import MyAsk from "../MyPage/MyAsk.js";
+import QaAll from "./QaAll";
+
 function QaPage() {
   const [posts, setPosts] = useState([]);
   const [newPost, setNewPost] = useState({
@@ -87,7 +88,7 @@ function QaPage() {
       </div>
 
       <div className="myask">
-        <MyAsk />
+        <QaAll />
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ const categories = [
     icon: "/icon/chat.svg",
   },
   {
-    name: "배달 앱",
+    name: "배달 ",
     icon: "/icon/deliver.svg",
   },
   {

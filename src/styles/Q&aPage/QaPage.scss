@@ -2,6 +2,7 @@
   width: 100%;
   max-width: 1064px;
   margin: 0 auto;
+  box-sizing: border-box;
   padding: 20px 10px;
   display: flex;
   flex-direction: column; // 세로로 항목 정렬
@@ -105,4 +106,5 @@ h5 {
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 1024px;
 }

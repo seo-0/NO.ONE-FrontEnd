@@ -1,15 +1,28 @@
-import { useRecoilState } from "recoil";
-import { educationListState } from "../../Data/EducationContent";
 import { useState, useEffect } from "react";
 import "../../styles/MainPage/MainEduList.scss";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const MainEduList = ({ selectedCategory }) => {
-  const [educationList] = useRecoilState(educationListState);
-  const [selectedEducationList, setSelectedEducationList] =
-    useState(educationList);
+  const [educationList, setEducationList] = useState([]);
+  const [selectedEducationList, setSelectedEducationList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://13.209.49.229:8080/api/v1/content"
+        );
+        setEducationList(response.data.result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     if (selectedCategory === "전체보기") {
@@ -66,11 +79,11 @@ const MainEduList = ({ selectedCategory }) => {
         {selectedEducationList.map((content) => (
           <div
             className="main-edu-content"
-            onClick={() => goEduContent(content.id)}
-            key={content.id}
+            onClick={() => goEduContent(content.contentId)}
+            key={content.contentId}
           >
-            <img src={content.logo} alt="logo" />
-            <p>[ {content.company} ]</p>
+            <img src={content.companyImg} alt="logo" />
+            <p>[ {content.companyName} ]</p>
             <p>{content.title}</p>
           </div>
         ))}
