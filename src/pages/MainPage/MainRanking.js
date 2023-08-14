@@ -1,23 +1,36 @@
 // 메인 페이지에 실시간 인기 순위를 출력하는 컴포넌트
 import "../../styles/MainPage/MainRanking.scss";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import MainClock from "./MainClock";
-
-const rankingKeyWords = [
-  "토스 송금하기",
-  "배달의 민족 어플 다운받아 배달 주문하기",
-  "백신 예약",
-  "쿠팡 특가 이벤트 구매",
-  "스타벅스 사이렌 오더 주문",
-  "카카오페이로 정산하기 이용해보기",
-  "카카오톡 '망그러진곰' 이모티콘 구매 방법",
-  "카카오버스에서 자주 이용하는 버스 추가하는 방법",
-  "네이버 블로그 작성",
-  "인스타그램 계정 생성",
-];
 
 const iconImages = ["ranking-same.svg", "ranking-down.svg", "ranking-up.svg"];
 
 const MainRanking = () => {
+  const [rankingData, setRankingData] = useState([]);
+  const [rankingKeyWords, setRankingKeywords] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "http://13.209.49.229:8080/api/v1/content/realtime"
+        );
+        setRankingData(response.data.result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const keyWords = rankingData.map((item) => item.title);
+    const topKeywords = keyWords.slice(0, 10);
+    setRankingKeywords(topKeywords);
+  }, [rankingData]);
+
   const frontKeyWords = rankingKeyWords.slice(0, 5);
   const backKeyWords = rankingKeyWords.slice(5);
 
