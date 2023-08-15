@@ -1,0 +1,55 @@
+.qadetail-container {
+  width: 100%;
+  max-width: 1064px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 20px 10px;
+
+  button {
+    border: none;
+    outline: none;
+    background: #00008b;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 30px;
+    border-radius: 10px;
+  }
+
+  .ask-container {
+    width: 100%;
+    border-radius: 15px;
+    border: 1px solid #d0d0d0;
+    padding: 20px 10px 40px 10px;
+    box-sizing: border-box;
+    margin: 20px 0;
+
+    div {
+      border-bottom: 1px solid #d0d0d0;
+
+      h1 {
+        margin: 0;
+        word-wrap: break-word;
+        font-size: 28px;
+      }
+
+      p {
+        width: 50px;
+        color: #ffffff;
+        padding: 5px 20px;
+        font-size: 16px;
+        margin: 10px 0;
+        border-radius: 25px;
+        font-weight: 700;
+      }
+
+      .status-complete {
+        background: #699bf7;
+      }
+
+      .status-ongoing {
+        background: #f24e1e;
+      }
+    }
+  }
+}

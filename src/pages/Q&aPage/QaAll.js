@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../styles/MyPage/MyAsk.scss";
 
@@ -15,10 +16,10 @@ const TableHeader = () => {
   );
 };
 
-const TableRow = ({ id, title, content, status }) => {
+const TableRow = ({ id, title, content, status, onClick }) => {
   const statusColor = status === "진행 중" ? "#F24E1E" : "#699BF7";
   return (
-    <tr>
+    <tr onClick={onClick}>
       <td>{id}</td>
       <td>{title}</td>
       <td>{content}</td>
@@ -52,6 +53,11 @@ const QaAll = () => {
     setShowAll(!showAll);
   };
 
+  const navigate = useNavigate();
+  const goDetail = (inquiryId) => {
+    navigate(`/QaPage/${inquiryId}`);
+  };
+
   return (
     <div className="myask-container">
       <h1>전체 문의글</h1>
@@ -65,6 +71,7 @@ const QaAll = () => {
               title={ask.title}
               content={ask.description}
               status={ask.isAnswer === "Y" ? "답변 완료" : "진행 중"}
+              onClick={() => goDetail(ask.inquiryId)}
             />
           ))}
         </tbody>
