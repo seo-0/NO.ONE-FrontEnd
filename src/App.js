@@ -6,6 +6,7 @@ import SearchApp from "./pages/SearchPage/SearchApp";
 import LoginModal from "./pages/LoginPage/LoginModal";
 import SignUpModal from "./pages/LoginPage/SignUpModal";
 import QaPage from "./pages/Q&aPage/QaPage";
+import QaDetail from "./pages/Q&aPage/QaDetail";
 import MyPageApp from "./pages/MyPage/MyPageApp";
 import EducationContentPage from "./pages/EduContentPage/EduContentPage";
 import ContentApp from "./pages/ContentPage/ContentApp";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<MainApp />} />
           <Route path="/search" element={<SearchApp />} />
           <Route path="/QaPage" element={<QaPage />} />
+          <Route path="/QaPage/:inquiryId" element={<QaDetail />} />
           <Route path="/mypage/*" element={<MyPageApp />} />
           <Route
             path="/education-content-page/:contentId"
