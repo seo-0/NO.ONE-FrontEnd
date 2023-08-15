@@ -39,7 +39,7 @@ function SignUpModal() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //비밀번호 일치 여부 검사
+    // 비밀번호 일치 여부 검사
     if (!passwordMatch) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
@@ -49,7 +49,10 @@ function SignUpModal() {
       return;
     }
     try {
-      const response = await axios.post("http://13.209.49.229:8080/api/v1/user/signup", credentials);
+      const response = await axios.post(
+        "http://13.209.49.229:8080/api/v1/user/signup",
+        credentials
+      );
       // 응답을 처리하는 코드
       console.log("성공적으로 회원가입이 완료되었습니다.:", response.data);
       alert("성공적으로 회원가입이 완료되었습니다.:", response.data);
