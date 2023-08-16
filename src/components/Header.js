@@ -4,6 +4,9 @@ import styled from "styled-components";
 import "../styles/components/Header.scss";
 import { useSetRecoilState } from "recoil";
 import { loginModalState } from "../pages/LoginPage/state";
+import { userState1 } from "../pages/LoginPage/state"; 
+import { useRecoilState } from "recoil";
+
 
 const StyledLink = styled(Link)`
   text-decoration-line: none;
@@ -22,6 +25,8 @@ const Header = () => {
   const currentPath = location.pathname.slice(1);
   const setLoginModalShow = useSetRecoilState(loginModalState);
 
+  const [user, setUser] = useRecoilState(userState1); //로그인상태관리
+
   const [searchKeyword, SetSearchKeyword] = useState("");
   const navigate = useNavigate();
 
@@ -38,6 +43,12 @@ const Header = () => {
 
   const goHome = () => {
     navigate("/");
+  };
+
+  const handleLogout = () => { 
+    // Token을 null로 설정하고, 사용자 이름도 null로 설정하여 로그아웃 처리하기
+    setUser({ isLoggedIn: false, token: null, username: null });
+    console.log("로그아웃 되었습니다.");
   };
 
   return (
@@ -84,17 +95,30 @@ const Header = () => {
             </StyledLink>
             <li>포인트</li>
           </ul>
+
           <ul>
-            <StyledLink
-              to="/mypage"
-              className={currentPath === "mypage" ? "selected" : ""}
-            >
-              <li>사용자님</li> {/* 로그인 api 연동시 삭제 예정 */}
-            </StyledLink>
-            <StyledLink>
+          {user.isLoggedIn ? (
+            <>
+              <StyledLink
+                to="/mypage"
+                className={currentPath === "mypage" ? "selected" : ""}
+              >
+                <li>{user.isLoggedIn ? `${user.username} 님` : '로그인'}</li>
+              </StyledLink>
+              <li onClick={handleLogout}>로그아웃</li>
+            </>
+          ) : (
+            <>
+              <StyledLink
+                to="/mypage"
+                className={currentPath === "mypage" ? "selected" : ""}
+              >
+                <li>사용자님</li>
+              </StyledLink>
               <li onClick={() => setLoginModalShow(true)}>로그인</li>
-            </StyledLink>
-          </ul>
+            </>
+          )}
+        </ul>
         </div>
       </div>
       <Outlet />
