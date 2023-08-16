@@ -3,8 +3,8 @@ import { useState } from "react";
 import styled from "styled-components";
 import "../styles/components/Header.scss";
 import { useSetRecoilState } from "recoil";
-import { loginModalState } from "../pages/LoginPage/state";
-import { userState1 } from "../pages/LoginPage/state"; 
+import { loginModalState } from "../Data/state";
+import { userState1 } from "../Data/state"; 
 import { useRecoilState } from "recoil";
 
 

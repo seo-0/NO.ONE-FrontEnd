@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import QaAll from "./QaAll";
-import "../../styles/Q&aPage/QaDetail.scss";
+import "../../styles/QaPage/QaDetail.scss";
 
 const QaDetail = () => {
   const [ask, setAsk] = useState([]);

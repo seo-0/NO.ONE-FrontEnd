@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { errorSelector, useRecoilState } from "recoil";
-import { signUpModalState } from "./state";
+import { useRecoilState } from "recoil";
+import { signUpModalState } from "../../Data/state";
 import "../../styles/LoginPage/SignUpModal.scss";
 import axios from "axios";
 

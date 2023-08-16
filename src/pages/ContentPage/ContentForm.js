@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import axios from "axios";
 import categories from "../../Data/Category";
-import { userState1 } from "../../pages/LoginPage/state";
+import { userState1 } from "../../Data/state";
 import "../../styles/ContentPage/ContentForm.scss";
 
 const ContentForm = () => {
