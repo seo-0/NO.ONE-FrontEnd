@@ -10,3 +10,13 @@ export const signUpModalState = atom({
   key: 'signUpModalState',
   default: false,
 });
+
+export const userState1= atom({
+  key: "userState1",
+  default:{
+    isLoggedIn: false,
+    token: null,
+    username: null,
+    email: null,
+  }
+})

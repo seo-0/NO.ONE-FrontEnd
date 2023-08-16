@@ -3,6 +3,9 @@ import { Outlet, Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import "../../styles/MyPage/MyPageMenu.scss";
 
+import { useRecoilValue } from "recoil";
+import { userState1 } from "../../pages/LoginPage/state";
+
 const StyledLink = styled(Link)`
   text-decoration-line: none;
   list-style: none;
@@ -18,13 +21,15 @@ const StyledLink = styled(Link)`
 `;
 
 const MyPageMenu = () => {
+  const user = useRecoilValue(userState1);
+
   const location = useLocation();
   const currentPath = location.pathname.slice("/mypage".length + 1);
 
   return (
     <div className="mypage-container">
       <div className="mypage-menubar">
-        <h1>장현정님 안녕하세요!</h1>
+        <h1>{user.username}님 안녕하세요!</h1>
         <ul className="mypage-menu-top">
           <StyledLink to="" className={currentPath === "" ? "selected" : ""}>
             <li>전체보기</li>

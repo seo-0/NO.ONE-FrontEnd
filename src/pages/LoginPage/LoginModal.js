@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import { loginModalState, signUpModalState } from "./state";
+import { loginModalState, signUpModalState, userState1 } from "./state"; 
 import "../../styles/LoginPage/LoginModal.scss";
-import axios from "axios";
+import apiInstance from '../../utils/api'; // 위에서 생성한 axios 인스턴스 가져오기
 
 
 function LoginModal() {
   const [showLoginModal, setShowLoginModal] = useRecoilState(loginModalState);
-  const [showSignUpModal, setShowSignUpModal] =
-    useRecoilState(signUpModalState);
+  const [showSignUpModal, setShowSignUpModal] = useRecoilState(signUpModalState);
+
+  const [user, setUser] = useRecoilState(userState1); 
+
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
@@ -19,10 +21,26 @@ function LoginModal() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://13.209.49.229:8080/api/v1/user/login", credentials);
+      const response = await apiInstance.post("/user/login", credentials);
+
+      console.log("토큰 값 Access_Token:", response.data.access_token);
+
+      setUser({
+        isLoggedIn: true,
+        token: response.data.access_token,
+        username: response.data.name, 
+        email: response.data.email,
+      });
       
       console.log("성공적으로 로그인이 완료되었습니다.:", response.data);
-      alert("성공적으로 로그인이 완료되었습니다.:", response.data);
+      alert("성공적으로 로그인이 완료되었습니다.", response.data);
+
+      // 인스턴스에 토큰을 기본 헤더로 설정
+      apiInstance.defaults.headers['Authorization'] = `Bearer ${response.data.access_token}`;
+      console.log("설정된 헤더:", apiInstance.defaults.headers);
+
+      setShowLoginModal(false);
+   
     } catch (error) {
       if (error.response) {
           // 서버에서 응답을 받았으나, 2xx의 상태 코드를 받지 못한 경우
@@ -33,15 +51,14 @@ function LoginModal() {
       } else {
           // 요청 설정 중 오류 발생 혹은 기타 어떠한 이유로 요청이 설정되지 않은 경우
           alert("요청을 보내는 중에 오류가 발생했습니다.");
+          console.log(error);
       }
   }
-
       };
 
       if(!showLoginModal){
         return null;
       }
-
 
   return (
     <div className="modal-wrapper">
