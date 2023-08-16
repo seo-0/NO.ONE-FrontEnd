@@ -318,3 +318,21 @@
     font-size: 11px;
   }
 }
+
+.warning-container {
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid #d0d0d0;
+  padding: 40px 20px;
+  margin-bottom: 40px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .warning-message {
+    text-align: center;
+    color: #f24e1e;
+  }
+}

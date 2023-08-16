@@ -1,22 +1,23 @@
 // state.js
-import { atom } from 'recoil';
+import { atom } from "recoil";
 
 export const loginModalState = atom({
-  key: 'loginModalState',
+  key: "loginModalState",
   default: false,
 });
 
 export const signUpModalState = atom({
-  key: 'signUpModalState',
+  key: "signUpModalState",
   default: false,
 });
 
-export const userState1= atom({
+export const userState1 = atom({
   key: "userState1",
-  default:{
+  default: {
     isLoggedIn: false,
     token: null,
     username: null,
     email: null,
-  }
-})
+    userId: null,
+  },
+});
