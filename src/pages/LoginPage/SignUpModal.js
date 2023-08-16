@@ -6,6 +6,7 @@ import axios from "axios";
 
 function SignUpModal() {
   const [showModal, setShowModal] = useRecoilState(signUpModalState);
+  
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -17,6 +18,10 @@ function SignUpModal() {
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [verificationCodeMatch, setVerificationCodeMatch] = useState(false);
 
+  //서버에서 응답으로 주는 인증번호와 사용자가 입력한 인증번호를 비교
+  const [serverVerificationCode, setServerVerificationCode] = useState("");
+
+
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
@@ -26,16 +31,25 @@ function SignUpModal() {
     setPasswordMatch(credentials.password === credentials.passwordConfirm);
   }, [credentials]);
 
-  // 인증번호 일치 여부 확인 (임시로 '1234'라고 가정)
+  // 인증번호 일치 여부 확인 
   useEffect(() => {
-    setVerificationCodeMatch(credentials.verificationCode === "1234");
-  }, [credentials]);
+    setVerificationCodeMatch(credentials.verificationCode === serverVerificationCode);
+}, [credentials, serverVerificationCode]);
 
-  const handlePhoneVerification = (e) => {
+
+  const handlePhoneVerification = async (e) => {
     e.preventDefault();
-    // 여기서 전화번호로 인증번호를 보내는 API 호출을 수행합니다.
-    console.log("인증번호가 전송되었습니다.");
-  };
+    try {
+        const response = await axios.post("http://13.209.49.229:8080/api/v1/phone/send-one", {
+            phone: credentials.phone
+        });
+        setServerVerificationCode(response.data.verificationCode); // 서버에서 주는 응답의 필드 이름에 따라 다를 수 있음
+        console.log(response.data);
+        alert("인증번호가 전송되었습니다.");
+    } catch (error) {
+        alert("인증번호 전송에 실패했습니다.");
+    }
+};
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,7 +61,7 @@ function SignUpModal() {
     if (!verificationCodeMatch) {
       alert("인증번호가 일치하지 않습니다.");
       return;
-    }
+  }
     try {
       const response = await axios.post(
         "http://13.209.49.229:8080/api/v1/user/signup",
@@ -55,7 +69,7 @@ function SignUpModal() {
       );
       // 응답을 처리하는 코드
       console.log("성공적으로 회원가입이 완료되었습니다.:", response.data);
-      alert("성공적으로 회원가입이 완료되었습니다.:", response.data);
+      alert("성공적으로 회원가입이 완료되었습니다.", response.data);
     } catch (error) {
       if (error.response) {
         // 서버에서 응답을 받았으나, 2xx의 상태 코드를 받지 못한 경우
