@@ -4,7 +4,7 @@ import styled from "styled-components";
 import "../../styles/MyPage/MyPageMenu.scss";
 
 import { useRecoilValue } from "recoil";
-import { userState1 } from "../../pages/LoginPage/state";
+import { userState1 } from "../../Data/state";
 
 const StyledLink = styled(Link)`
   text-decoration-line: none;
