@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import { loginModalState, signUpModalState, userState1 } from "./state";
+import { loginModalState, signUpModalState, userState1 } from "../../Data/state";
 import "../../styles/LoginPage/LoginModal.scss";
 import apiInstance from "../../utils/api"; // 위에서 생성한 axios 인스턴스 가져오기
 
