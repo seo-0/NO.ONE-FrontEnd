@@ -50,5 +50,3 @@ cd [프로젝트 폴더명]
 npm install
 npm start
 
-## 라이센스 
-MIT © [Your Name]
