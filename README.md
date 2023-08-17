@@ -1,7 +1,6 @@
 # 아무도(no one) 모르는 신기술 백과사전 NO:ONE <br /> 노(no)인과 하나(one)된 삶을 추구하는 NO:ONE
 
 <div align="center">
-  <img src="your-logo-url.png" alt="Your Logo" width="200" />
   <br>
   <strong>당신의 교육 컨텐츠를 쉽게 찾다.</strong>
 </div>
