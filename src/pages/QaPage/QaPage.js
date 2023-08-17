@@ -3,12 +3,12 @@ import "../../styles/QaPage/QaPage.scss";
 import "../MyPage/MyAsk.js";
 import QaAll from "./QaAll";
 import axios from "axios";
-import { useRecoilValue, useRecoilState } from 'recoil';
-import { userState1, loginModalState} from '../../Data/state'
+import { useRecoilValue, useRecoilState } from "recoil";
+import { userState1, loginModalState } from "../../Data/state";
 
 function QaPage() {
-  const user = useRecoilValue(userState1);  // Recoil로부터 user 값을 가져옴
-  const token = user.token;  // user 객체에서 token 값을 가져옴
+  const user = useRecoilValue(userState1); // Recoil로부터 user 값을 가져옴
+  const token = user.token; // user 객체에서 token 값을 가져옴
   const [showLoginModal, setShowLoginModal] = useRecoilState(loginModalState);
 
   const [posts, setPosts] = useState([]);
@@ -17,8 +17,9 @@ function QaPage() {
     description: "",
   });
   useEffect(() => {
-    if (!user.token) {  // token이 없으면 로그인 상태가 아닌 것으로 판단
-      alert("로그인이 필요한 서비스입니다. 로그인 후 다시 시도하세요. ");  // 사용자에게 알림
+    if (!user.token) {
+      // token이 없으면 로그인 상태가 아닌 것으로 판단
+      alert("로그인이 필요한 서비스입니다. 로그인 후 다시 시도하세요. "); // 사용자에게 알림
       // 로그인 페이지로 리다이렉션 (예: /login이 로그인 페이지라고 가정)
       setShowLoginModal(true);
     }
@@ -30,31 +31,36 @@ function QaPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const config = {  // axios 요청 설정을 정의
+    const config = {
+      // axios 요청 설정을 정의
       headers: {
-        'Authorization': 'Bearer ' + token  // 토큰을 헤더에 첨부
-      }
+        Authorization: "Bearer " + token, // 토큰을 헤더에 첨부
+      },
     };
     console.log(config);
     try {
-        const response = await axios.post("http://13.209.49.229:8080/api/v1/inquiry", {
-            title: newPost.title,
-            description: newPost.description
-        }, config); //config를 axios 요청에 추가
+      const response = await axios.post(
+        "http://13.209.49.229:8080/api/v1/inquiry",
+        {
+          title: newPost.title,
+          description: newPost.description,
+        },
+        config
+      ); //config를 axios 요청에 추가
 
-        if (response.status >= 200 && response.status < 300) {
-            alert("문의글이 성공적으로 등록되었습니다.");
-            console.log(response);
-        } else {
-            alert("문의글 등록에 실패했습니다. 다시 시도해주세요.");
-        }
-        setPosts([newPost, ...posts]);
-        setNewPost({ title: "", description: "" });
+      if (response.status >= 200 && response.status < 300) {
+        alert("문의글이 성공적으로 등록되었습니다.");
+        // console.log(response);
+      } else {
+        alert("문의글 등록에 실패했습니다. 다시 시도해주세요.");
+      }
+      setPosts([newPost, ...posts]);
+      setNewPost({ title: "", description: "" });
     } catch (error) {
-        alert("문의글 전송 중 오류가 발생했습니다. 다시 시도해주세요.");
-        console.error(error);
+      alert("문의글 전송 중 오류가 발생했습니다. 다시 시도해주세요.");
+      console.error(error);
     }
-};
+  };
 
   return (
     <div className="qa-page-container">
@@ -100,7 +106,7 @@ function QaPage() {
             </div>
           </label>
           <br></br>
-          
+
           <h5>
             해당 문의글은 NO:ONE이 검토 후 빠르게 안내드릴 수 있도록 할게요!
           </h5>

@@ -44,47 +44,4 @@ const postsState = atom({
   ],
 });
 
-// 가상의 문의글 데이터
-const asksState = atom({
-  key: "asksState",
-  default: [
-    {
-      id: 1,
-      title: "문의글 제목 1",
-      content: "문의글 내용 1",
-      status: "진행 중",
-    },
-    {
-      id: 2,
-      title: "문의글 제목 2",
-      content: "문의글 내용 2",
-      status: "답변 완료",
-    },
-    {
-      id: 3,
-      title: "문의글 제목 3",
-      content: "문의글 내용 3",
-      status: "진행 중",
-    },
-    {
-      id: 4,
-      title: "문의글 제목 4",
-      content: "문의글 내용 4",
-      status: "답변 완료",
-    },
-    {
-      id: 5,
-      title: "문의글 제목 5",
-      content: "문의글 내용 5",
-      status: "진행 중",
-    },
-    {
-      id: 6,
-      title: "문의글 제목 6",
-      content: "문의글 내용 6",
-      status: "답변 완료",
-    },
-  ],
-});
-
-export { userInfoState, postsState, asksState };
+export { userInfoState, postsState };

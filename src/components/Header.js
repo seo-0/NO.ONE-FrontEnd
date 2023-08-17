@@ -4,9 +4,8 @@ import styled from "styled-components";
 import "../styles/components/Header.scss";
 import { useSetRecoilState } from "recoil";
 import { loginModalState } from "../Data/state";
-import { userState1 } from "../Data/state"; 
+import { userState1 } from "../Data/state";
 import { useRecoilState } from "recoil";
-
 
 const StyledLink = styled(Link)`
   text-decoration-line: none;
@@ -45,7 +44,7 @@ const Header = () => {
     navigate("/");
   };
 
-  const handleLogout = () => { 
+  const handleLogout = () => {
     // Token을 null로 설정하고, 사용자 이름도 null로 설정하여 로그아웃 처리하기
     setUser({ isLoggedIn: false, token: null, username: null });
     console.log("로그아웃 되었습니다.");
@@ -97,28 +96,22 @@ const Header = () => {
           </ul>
 
           <ul>
-          {user.isLoggedIn ? (
-            <>
-              <StyledLink
-                to="/mypage"
-                className={currentPath === "mypage" ? "selected" : ""}
-              >
-                <li>{user.isLoggedIn ? `${user.username} 님` : '로그인'}</li>
-              </StyledLink>
-              <li onClick={handleLogout}>로그아웃</li>
-            </>
-          ) : (
-            <>
-              <StyledLink
-                to="/mypage"
-                className={currentPath === "mypage" ? "selected" : ""}
-              >
-                <li>사용자님</li>
-              </StyledLink>
-              <li onClick={() => setLoginModalShow(true)}>로그인</li>
-            </>
-          )}
-        </ul>
+            {user.isLoggedIn ? (
+              <>
+                <StyledLink
+                  to="/mypage"
+                  className={currentPath === "mypage" ? "selected" : ""}
+                >
+                  <li>{user.isLoggedIn ? `${user.username} 님` : "로그인"}</li>
+                </StyledLink>
+                <li onClick={handleLogout}>로그아웃</li>
+              </>
+            ) : (
+              <>
+                <li onClick={() => setLoginModalShow(true)}>로그인</li>
+              </>
+            )}
+          </ul>
         </div>
       </div>
       <Outlet />

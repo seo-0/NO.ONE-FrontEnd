@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useRecoilState } from "recoil";
-import { loginModalState, signUpModalState, userState1 } from "../../Data/state";
+import {
+  loginModalState,
+  signUpModalState,
+  userState1,
+} from "../../Data/state";
 import "../../styles/LoginPage/LoginModal.scss";
 import apiInstance from "../../utils/api"; // 위에서 생성한 axios 인스턴스 가져오기
 
@@ -23,7 +27,7 @@ function LoginModal() {
     try {
       const response = await apiInstance.post("/user/login", credentials);
 
-      console.log("토큰 값 Access_Token:", response.data.access_token);
+      // console.log("토큰 값 Access_Token:", response.data.access_token);
 
       setUser({
         isLoggedIn: true,
@@ -33,14 +37,14 @@ function LoginModal() {
         userId: response.data.userId,
       });
 
-      console.log("성공적으로 로그인이 완료되었습니다.:", response.data);
+      // console.log("성공적으로 로그인이 완료되었습니다.:", response.data);
       alert("성공적으로 로그인이 완료되었습니다.", response.data);
 
       // 인스턴스에 토큰을 기본 헤더로 설정
       apiInstance.defaults.headers[
         "Authorization"
       ] = `Bearer ${response.data.access_token}`;
-      console.log("설정된 헤더:", apiInstance.defaults.headers);
+      // console.log("설정된 헤더:", apiInstance.defaults.headers);
 
       setShowLoginModal(false);
     } catch (error) {
@@ -56,7 +60,7 @@ function LoginModal() {
       } else {
         // 요청 설정 중 오류 발생 혹은 기타 어떠한 이유로 요청이 설정되지 않은 경우
         alert("요청을 보내는 중에 오류가 발생했습니다.");
-        console.log(error);
+        // console.log(error);
       }
     }
   };

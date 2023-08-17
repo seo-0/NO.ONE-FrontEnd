@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRecoilValue } from "recoil";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import categories from "../../Data/Category";
 import { userState1 } from "../../Data/state";
 import "../../styles/ContentPage/ContentForm.scss";
@@ -16,6 +17,7 @@ const ContentForm = () => {
     { content: "", file: null, hashtags: [] },
     { content: "", file: null, hashtags: [] },
   ]);
+  const navigate = useNavigate();
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -101,8 +103,13 @@ const ContentForm = () => {
       );
       console.log("서버 응답:", response.data);
       console.log("제출된 데이터:", formData);
+      alert("교육 컨텐츠가 성공적으로 등록되었습니다.");
+      navigate("/");
       // 성공적인 응답 처리
     } catch (error) {
+      alert(
+        "교육 컨텐츠를 등록하지 못했습니다. 입력을 빠짐없이 다시 작성해주세요."
+      );
       console.error("데이터 전송 실패", error);
       console.log(formData);
       // 네트워크 또는 처리 오류 처리

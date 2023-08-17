@@ -1,8 +1,8 @@
 // 나의 프로필
 import { useRecoilValue } from "recoil";
-import { userInfoState, postsState, asksState } from "../../Data/User";
+import { userInfoState, postsState } from "../../Data/User";
 import "../../styles/MyPage/MyProfile.scss";
-import { userState1 } from "../../Data/state";
+import { userState1, asksState } from "../../Data/state";
 
 const MyProfile = () => {
   const user = useRecoilValue(userState1); //실제 유저 데이터
