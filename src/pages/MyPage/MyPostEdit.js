@@ -54,12 +54,12 @@ const MyPostEdit = () => {
     }
   };
 
-  const handleEdit = async () => {
-    try {
-    } catch (error) {
-      console.error("컨텐츠 수정 실패: ", error);
-    }
-  };
+  // const handleEdit = async () => {
+  //   try {
+  //   } catch (error) {
+  //     console.error("컨텐츠 수정 실패: ", error);
+  //   }
+  // };
 
   const handleDelete = async () => {
     try {
@@ -79,7 +79,7 @@ const MyPostEdit = () => {
 
   return (
     <div className="mypost-edit-container">
-      <h1 className="title">등록된 교육 컨텐츠</h1>
+      {/* <h1 className="title">등록된 교육 컨텐츠</h1> */}
       <EducationContentPage />
       <div className="content-form-container">
         <form>
@@ -158,7 +158,7 @@ const MyPostEdit = () => {
           </div>
           <div className="button-zip">
             <button onClick={handleDelete}>게시글 삭제</button>
-            <button onClick={handleEdit}>수정</button>
+            {/* <button onClick={handleEdit}>수정</button> */}
           </div>
         </form>
       </div>

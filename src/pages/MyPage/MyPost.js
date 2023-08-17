@@ -54,7 +54,7 @@ const MyPost = () => {
               <p>[ {post.companyName} ]</p>
               <p>{post.title}</p>
               <span className="link">
-                수정 및 삭제
+                컨텐츠 확인 및 삭제
                 <img src="/icon/arrow-right.svg" alt="arrow" />
               </span>
             </div>
