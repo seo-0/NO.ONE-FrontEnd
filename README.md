@@ -1,4 +1,4 @@
-# 아무도(no one) 모르는 신기술 백과사전 NO:ONE, <br /> 노(no)인과 하나(one)된 삶을 위한 그 날까지 
+# 아무도(no one) 모르는 신기술 백과사전 NO:ONE
 
 <div align="center">
   <img src="your-logo-url.png" alt="Your Logo" width="200" />
