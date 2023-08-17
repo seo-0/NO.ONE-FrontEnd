@@ -6,7 +6,7 @@ import axios from "axios";
 
 function SignUpModal() {
   const [showModal, setShowModal] = useRecoilState(signUpModalState);
-  
+
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -21,7 +21,6 @@ function SignUpModal() {
   //서버에서 응답으로 주는 인증번호와 사용자가 입력한 인증번호를 비교
   const [serverVerificationCode, setServerVerificationCode] = useState("");
 
-
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
@@ -31,48 +30,51 @@ function SignUpModal() {
     setPasswordMatch(credentials.password === credentials.passwordConfirm);
   }, [credentials]);
 
-  // 인증번호 일치 여부 확인 
+  // 인증번호 일치 여부 확인
   useEffect(() => {
     setVerificationCodeMatch(credentials.cer === serverVerificationCode);
-}, [credentials, serverVerificationCode]);
-
+  }, [credentials, serverVerificationCode]);
 
   const handlePhoneVerification = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post("http://13.209.49.229:8080/api/v1/phone/send-one", {
-            phone: credentials.phone
-        });
-        setServerVerificationCode(response.data.cer); // 서버에서 주는 응답의 필드 이름에 따라 다를 수 있음
-        console.log(response.data);
-        alert("인증번호가 전송되었습니다.");
-    } catch (error) {
-        alert("인증번호 전송에 실패했습니다.");
-    }
-};
-  const handleVerificationCodeCheck = async () => {
-  try {
-      const response = await axios.post("http://13.209.49.229:8080/api/v1/phone/check", {
+      const response = await axios.post(
+        "http://13.209.49.229:8080/api/v1/phone/send-one",
+        {
           phone: credentials.phone,
-          cer: credentials.cer
-      });
+        }
+      );
+      setServerVerificationCode(response.data.cer); // 서버에서 주는 응답의 필드 이름에 따라 다를 수 있음
+      console.log(response.data);
+      alert("인증번호가 전송되었습니다.");
+    } catch (error) {
+      alert("인증번호 전송에 실패했습니다.");
+    }
+  };
+  const handleVerificationCodeCheck = async () => {
+    try {
+      const response = await axios.post(
+        "http://13.209.49.229:8080/api/v1/phone/check",
+        {
+          phone: credentials.phone,
+          cer: credentials.cer,
+        }
+      );
       console.log("서버로부터의 응답:", response.data);
 
       if (response.data === "인증되었습니다") {
-          setVerificationCodeMatch(true);
-          alert("인증이 완료되었습니다.");
-          console.log("인증 성공");
-
+        setVerificationCodeMatch(true);
+        alert("인증이 완료되었습니다.");
+        console.log("인증 성공");
       } else {
-          setVerificationCodeMatch(false);
-          alert("잘못된 인증번호입니다.");
-          console.log("인증 실패");
+        setVerificationCodeMatch(false);
+        alert("잘못된 인증번호입니다.");
+        console.log("인증 실패");
       }
-  } catch (error) {
+    } catch (error) {
       alert("인증 과정 중 오류가 발생했습니다.");
-  }
-};
-
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,14 +86,14 @@ function SignUpModal() {
     if (!verificationCodeMatch) {
       alert("인증번호가 일치하지 않습니다.");
       return;
-  }
+    }
     try {
       const response = await axios.post(
         "http://13.209.49.229:8080/api/v1/user/signup",
         credentials
       );
       // 응답을 처리하는 코드
-      console.log("성공적으로 회원가입이 완료되었습니다.:", response.data);
+      // console.log("성공적으로 회원가입이 완료되었습니다.:", response.data);
       alert("성공적으로 회원가입이 완료되었습니다.", response.data);
     } catch (error) {
       if (error.response) {
@@ -184,13 +186,15 @@ function SignUpModal() {
 
           {/*인증번호 확인 로직 구현 부분 */}
           <div className="phone-verification">
-              <input
-                  type="tel"
-                  name="phone"
-                  placeholder="전화번호"
-                  onChange={handleChange}
-              />
-              <button type="button" onClick={handlePhoneVerification}>인증번호 받기</button>
+            <input
+              type="tel"
+              name="phone"
+              placeholder="전화번호"
+              onChange={handleChange}
+            />
+            <button type="button" onClick={handlePhoneVerification}>
+              인증번호 받기
+            </button>
           </div>
 
           <div className="verify">
@@ -200,13 +204,19 @@ function SignUpModal() {
               placeholder="인증번호"
               onChange={handleChange}
             />
-            <button className="verify-btn" type="button" onClick={handleVerificationCodeCheck}>인증번호 확인</button>
+            <button
+              className="verify-btn"
+              type="button"
+              onClick={handleVerificationCodeCheck}
+            >
+              인증번호 확인
+            </button>
           </div>
 
           {verificationCodeMatch ? (
-              <div style={{ color: "green" }}>인증이 완료되었습니다.</div>
+            <div style={{ color: "green" }}>인증이 완료되었습니다.</div>
           ) : (
-              <div style={{ color: "red" }}>인증번호가 일치하지 않습니다.</div>
+            <div style={{ color: "red" }}>인증번호가 일치하지 않습니다.</div>
           )}
 
           <button className="signup-btn" type="submit">
