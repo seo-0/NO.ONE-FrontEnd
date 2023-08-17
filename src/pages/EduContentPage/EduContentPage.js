@@ -64,6 +64,7 @@ function EducationContentPage() {
     <div className="edu-container">
       <h1>[{educationContent.companyName}]</h1>
       <h3>{educationContent.title}</h3>
+      <p>{educationContent.description}</p>
       <div className="image-count">
         <span>
           {currentIndex + 1} / {educationContent.contentPageList.length}

@@ -29,8 +29,11 @@ const QaDetail = () => {
         <button>목록으로</button>
       </Link>
       <div className="ask-container">
-        <div>
-          <h1>{ask.title}</h1>
+        <div className="title-container">
+          <h1>
+            <span>제목</span>
+            {ask.title}
+          </h1>
           <p
             className={
               ask.isAnswer === "Y" ? "status-complete" : "status-ongoing"
@@ -39,7 +42,10 @@ const QaDetail = () => {
             {ask.isAnswer === "Y" ? "답변 완료" : "진행 중"}
           </p>
         </div>
-        <p>{ask.description}</p>
+        <span className="description-title">내용</span>
+        <div className="description-container">
+          <p>{ask.description}</p>
+        </div>
       </div>
       <QaAll />
     </div>
