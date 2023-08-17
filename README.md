@@ -1,4 +1,5 @@
-# 교육 컨텐츠 검색 서비스
+# 아무도(no one) 모르는 신기술 백과사전 NO:ONE 
+# 노(no)인과 하나(one)된 삶을 위한 그 날까지 
 
 <div align="center">
   <img src="your-logo-url.png" alt="Your Logo" width="200" />
