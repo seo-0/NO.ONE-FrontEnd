@@ -54,13 +54,6 @@ const MyPostEdit = () => {
     }
   };
 
-  // const handleEdit = async () => {
-  //   try {
-  //   } catch (error) {
-  //     console.error("컨텐츠 수정 실패: ", error);
-  //   }
-  // };
-
   const handleDelete = async () => {
     try {
       console.log("Deleting content...");
