@@ -52,9 +52,11 @@ const MyAsk = () => {
           "http://13.209.49.229:8080/api/v1/inquiry/user",
           config
         );
-        setAsks(response.data);
+        console.log(response.data)
+;        setAsks(response.data);
       } catch (error) {
         alert("회원 문의글 가져오기 실패");
+        console.log(error);
       }
     };
 
@@ -75,7 +77,7 @@ const MyAsk = () => {
 
   return (
     <div className="myask-container">
-      <h1>작성한 문의글</h1>
+      <h1>{user.username}님이 작성한 문의글</h1>
       <table>
         <TableHeader />
         <tbody>
