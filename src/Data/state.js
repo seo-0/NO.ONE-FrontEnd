@@ -22,3 +22,7 @@ export const userState1 = atom({
   },
 });
 
+export const asksState = atom({
+  key: "asksState",
+  default: [],
+});
