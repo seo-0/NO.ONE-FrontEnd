@@ -54,7 +54,7 @@ function SignUpModal() {
   const handleVerificationCodeCheck = async () => {
     try {
       const response = await axios.post(
-        "http://13.209.49.229:8080/api/v1/phone/check",
+        "https://www.techconnection.store:8080/api/v1/phone/check",
         {
           phone: credentials.phone,
           cer: credentials.cer,
@@ -89,7 +89,7 @@ function SignUpModal() {
     }
     try {
       const response = await axios.post(
-        "http://13.209.49.229:8080/api/v1/user/signup",
+        "https://www.techconnection.store:8080/api/v1/user/signup",
         credentials
       );
       // 응답을 처리하는 코드

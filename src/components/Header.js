@@ -80,8 +80,8 @@ const Header = () => {
             </StyledLink>
             <li>
               <StyledLink
-                to="/QaPage"
-                className={currentPath === "QaPage" ? "selected" : ""}
+                to="/QaApp"
+                className={currentPath === "QaApp" ? "selected" : ""}
               >
                 문의글 작성
               </StyledLink>
