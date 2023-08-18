@@ -1,4 +1,4 @@
-//회원가입
+//회원가입 모달
 import React, { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { signUpModalState } from "../../Data/state";
