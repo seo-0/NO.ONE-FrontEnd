@@ -5,13 +5,14 @@ import "../../styles/MyPage/MyProfile.scss";
 import { userState1, asksState } from "../../Data/state";
 import { userInfoState } from "../../Data/User";
 import {useNavigate} from "react-router-dom";
+import apiInstance from "../../utils/api";
 
 const MyProfile = () => {
   const user = useRecoilValue(userState1); //실제 유저 데이터
   const [numberOfPosts, setNumberOfPosts] = useState(0); // 추가된 state
   const userInfo = useRecoilValue(userInfoState); //임시 데이터
   const asks = useRecoilValue(asksState);
-
+  const [userPoint, setUserPoint] = useState(0);
   useEffect(() => {
     const config = {
       headers: {
@@ -24,6 +25,10 @@ const MyProfile = () => {
           `https://www.techconnection.store:8080/api/v1/content/user?userId=${user.userId}`,
           config
         );
+        const fetchUserData = await apiInstance.get(
+            `/user`, config
+        );
+        setUserPoint(fetchUserData.data.point);
         console.log(response.data); // API 응답 자체를 확인
         setNumberOfPosts(response.data.result.length);
       } catch (error) {
@@ -51,7 +56,7 @@ const MyProfile = () => {
           </div>
           <div className="profile-top-info-point">
             <img src="/icon/point.svg" alt="point-icon" />
-            <p>{userInfo.points}P</p>
+            <p>{userPoint}P</p>
             <div className="point-usage" onClick={() => goPointUsage()}>
               <p>포인트 사용내역</p>
               <img src="/icon/arrow-grey.svg" alt="arrow" />
