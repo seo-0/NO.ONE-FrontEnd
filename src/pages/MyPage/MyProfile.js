@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import "../../styles/MyPage/MyProfile.scss";
 import { userState1, asksState } from "../../Data/state";
 import { userInfoState } from "../../Data/User";
+import {useNavigate} from "react-router-dom";
 
 const MyProfile = () => {
   const user = useRecoilValue(userState1); //실제 유저 데이터
@@ -33,6 +34,11 @@ const MyProfile = () => {
     fetchUserPosts();
   }, [user]);
 
+  const navigate = useNavigate();
+  const goPointUsage = () => {
+    navigate(`../point`);
+  };
+
   return (
     <div className="profile-container">
       <div className="profile-top">
@@ -46,7 +52,7 @@ const MyProfile = () => {
           <div className="profile-top-info-point">
             <img src="/icon/point.svg" alt="point-icon" />
             <p>{userInfo.points}P</p>
-            <div className="point-usage">
+            <div className="point-usage" onClick={() => goPointUsage()}>
               <p>포인트 사용내역</p>
               <img src="/icon/arrow-grey.svg" alt="arrow" />
             </div>

@@ -43,7 +43,7 @@ const MyPageMenu = () => {
               >
                 <li>프로필</li>
               </StyledLink>
-              <StyledLink to="">
+              <StyledLink to="point" className={currentPath === "point" ? "selected" : ""}>
                 <li>포인트 사용내역</li>
               </StyledLink>
               <StyledLink to="">

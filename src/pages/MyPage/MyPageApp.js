@@ -5,6 +5,7 @@ import MyPost from "./MyPost";
 import MyAsk from "./MyAsk";
 import MyPageAll from "./MyPageAll";
 import MyPostEdit from "./MyPostEdit";
+import MyPointTrade from "./MyPointTrade";
 
 const MyPageApp = () => {
   return (
@@ -13,6 +14,7 @@ const MyPageApp = () => {
         <Route path="/" element={<MyPageMenu />}>
           <Route index element={<MyPageAll />} />
           <Route path="/profile" element={<MyProfile />} />
+          <Route path="/point" element={<MyPointTrade />} />
           <Route path="/post" element={<MyPost />} />
           <Route path="/ask" element={<MyAsk />} />
         </Route>
