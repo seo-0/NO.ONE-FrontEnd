@@ -21,7 +21,7 @@ const MyPostEdit = () => {
       try {
         const response = await axios.get(
           // 사용자가 작성한 게시글 불러오는 걸로 api 경로 수정
-          `http://13.209.49.229:8080/api/v1/content/${contentId}`
+          `https://www.techconnection.store:8080/api/v1/content/${contentId}`
         );
         setEducationContent(response.data.result);
         console.log(response.data.result);
@@ -59,7 +59,7 @@ const MyPostEdit = () => {
       console.log("Deleting content...");
       await axios.delete(
         // 삭제 요청을 보내는 API 경로
-        `http://13.209.49.229:8080/api/v1/content/${contentId}`
+        `https://www.techconnection.store:8080/api/v1/content/${contentId}`
       );
       console.log("Deletion successful.");
       // 삭제 성공 시, 리다이렉트 등 필요한 작업 수행

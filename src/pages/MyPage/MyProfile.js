@@ -20,7 +20,7 @@ const MyProfile = () => {
     const fetchUserPosts = async () => {
       try {
         const response = await axios.get(
-          `http://13.209.49.229:8080/api/v1/content/user?userId=${user.userId}`,
+          `https://www.techconnection.store:8080/api/v1/content/user?userId=${user.userId}`,
           config
         );
         console.log(response.data); // API 응답 자체를 확인

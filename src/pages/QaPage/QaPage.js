@@ -40,7 +40,7 @@ function QaPage() {
     console.log(config);
     try {
       const response = await axios.post(
-        "http://13.209.49.229:8080/api/v1/inquiry",
+        "https://www.techconnection.store:8080/api/v1/inquiry",
         {
           title: newPost.title,
           description: newPost.description,

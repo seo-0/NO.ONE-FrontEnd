@@ -17,7 +17,7 @@ const MyPost = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://13.209.49.229:8080/api/v1/content/user?userId=${userId}` // userId를 URL에 추가합니다.
+          `https://www.techconnection.store:8080/api/v1/content/user?userId=${userId}` // userId를 URL에 추가합니다.
         );
         console.log(response.data);
         setEducationList(response.data.result);
