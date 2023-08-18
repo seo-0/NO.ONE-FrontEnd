@@ -24,7 +24,7 @@ const Header = () => {
   const currentPath = location.pathname.slice(1);
   const setLoginModalShow = useSetRecoilState(loginModalState);
 
-  const [user, setUser] = useRecoilState(userState1); //로그인상태관리
+  const [user, setUser] = useRecoilState(userState1); 
 
   const [searchKeyword, SetSearchKeyword] = useState("");
   const navigate = useNavigate();
