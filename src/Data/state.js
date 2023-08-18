@@ -16,6 +16,7 @@ export const userState1 = atom({
   default: {
     isLoggedIn: false,
     token: null,
+    refresh_token: null,
     username: null,
     email: null,
     userId: null,

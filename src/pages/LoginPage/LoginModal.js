@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRecoilState } from "recoil";
 import {
   loginModalState,
@@ -17,6 +17,24 @@ function LoginModal() {
 
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
+  useEffect(() => {
+    const storedAccessToken = localStorage.getItem("access_token");
+    const storedRefreshToken = localStorage.getItem("refresh_token");
+
+    if (storedAccessToken) {
+      setUser({
+        isLoggedIn: true,
+        token: storedAccessToken,
+        refresh_token: storedRefreshToken,
+      });
+
+      // 인스턴스에 토큰을 기본 헤더로 설정
+      apiInstance.defaults.headers[
+        "Authorization"
+      ] = `Bearer ${storedAccessToken}`;
+    }
+  }, []);
+
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
@@ -27,40 +45,39 @@ function LoginModal() {
     try {
       const response = await apiInstance.post("/user/login", credentials);
 
-      // console.log("토큰 값 Access_Token:", response.data.access_token);
-
+      console.log("Access Token:", response.data.access_token);
+      console.log("Refresh Token:", response.data.refresh_token);
+      
       setUser({
         isLoggedIn: true,
         token: response.data.access_token,
+        refresh_token: response.data.refresh_token,
         username: response.data.name,
         email: response.data.email,
         userId: response.data.userId,
       });
 
-      // console.log("성공적으로 로그인이 완료되었습니다.:", response.data);
-      alert("성공적으로 로그인이 완료되었습니다.", response.data);
+      // 토큰들을 localStorage에 저장
+      localStorage.setItem("access_token", response.data.access_token);
+      localStorage.setItem("refresh_token", response.data.refresh_token);
+
+      alert("성공적으로 로그인이 완료되었습니다.");
 
       // 인스턴스에 토큰을 기본 헤더로 설정
-      apiInstance.defaults.headers[
-        "Authorization"
-      ] = `Bearer ${response.data.access_token}`;
-      // console.log("설정된 헤더:", apiInstance.defaults.headers);
+      // apiInstance.defaults.headers[
+      //   "Authorization"
+      // ] = `Bearer ${response.data.access_token}`;
 
       setShowLoginModal(false);
     } catch (error) {
       if (error.response) {
-        // 서버에서 응답을 받았으나, 2xx의 상태 코드를 받지 못한 경우
         alert(
-          error.response.data.message ||
-            "로그인에 실패했습니다. 다시 시도하세요."
+          error.response.data.message || "로그인에 실패했습니다. 다시 시도하세요."
         );
       } else if (error.request) {
-        // 요청을 보냈지만, 응답을 받지 못한 경우
         alert("서버로부터 응답이 없습니다. 다시 시도하세요.");
       } else {
-        // 요청 설정 중 오류 발생 혹은 기타 어떠한 이유로 요청이 설정되지 않은 경우
         alert("요청을 보내는 중에 오류가 발생했습니다.");
-        // console.log(error);
       }
     }
   };
