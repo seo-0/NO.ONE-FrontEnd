@@ -44,9 +44,6 @@ function LoginModal() {
 
     try {
       const response = await apiInstance.post("/user/login", credentials);
-
-      console.log("Access Token:", response.data.access_token);
-      console.log("Refresh Token:", response.data.refresh_token);
       
       setUser({
         isLoggedIn: true,
