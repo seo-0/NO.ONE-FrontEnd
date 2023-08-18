@@ -12,6 +12,7 @@ import EducationContentPage from "./pages/EduContentPage/EduContentPage";
 import ContentApp from "./pages/ContentPage/ContentApp";
 import { RecoilRoot } from "recoil";
 import styled from "styled-components";
+import QaApp from "./pages/QaPage/QaApp";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -31,6 +32,7 @@ function App() {
           <Route path="/" element={<MainApp />} />
           <Route path="/search" element={<SearchApp />} />
           <Route path="/QaPage" element={<QaPage />} />
+          <Route path="/QaApp" element={<QaApp />} />
           <Route path="/QaPage/:inquiryId" element={<QaDetail />} />
           <Route path="/mypage/*" element={<MyPageApp />} />
           <Route
