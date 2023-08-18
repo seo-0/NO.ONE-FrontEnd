@@ -18,23 +18,21 @@ function LoginModal() {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
   useEffect(() => {
-    const storedAccessToken = localStorage.getItem("access_token");
-    const storedRefreshToken = localStorage.getItem("refresh_token");
-
-    if (storedAccessToken) {
+    
+    if (user.access_token) {
       setUser({
         isLoggedIn: true,
-        token: storedAccessToken,
-        refresh_token: storedRefreshToken,
+        token: user.access_token,
+        refresh_token: user.refresh_token,
       });
-
       // 인스턴스에 토큰을 기본 헤더로 설정
       apiInstance.defaults.headers[
         "Authorization"
-      ] = `Bearer ${storedAccessToken}`;
+      ] = `Bearer ${user.access_token}`;
     }
   }, []);
 
+  
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
@@ -57,13 +55,12 @@ function LoginModal() {
       // 토큰들을 localStorage에 저장
       localStorage.setItem("access_token", response.data.access_token);
       localStorage.setItem("refresh_token", response.data.refresh_token);
-
+      localStorage.setItem("username", response.data.name);
+      localStorage.setItem("email", response.data.email);
+      localStorage.setItem("userId", response.data.userId.toString()); // userId가 숫자라면 toString()으로 문자열로 변환
+      
+      
       alert("성공적으로 로그인이 완료되었습니다.");
-
-      // 인스턴스에 토큰을 기본 헤더로 설정
-      // apiInstance.defaults.headers[
-      //   "Authorization"
-      // ] = `Bearer ${response.data.access_token}`;
 
       setShowLoginModal(false);
     } catch (error) {

@@ -24,7 +24,7 @@ const Header = () => {
   const currentPath = location.pathname.slice(1);
   const setLoginModalShow = useSetRecoilState(loginModalState);
 
-  const [user, setUser] = useRecoilState(userState1); //로그인상태관리
+  const [user, setUser] = useRecoilState(userState1); 
 
   const [searchKeyword, SetSearchKeyword] = useState("");
   const navigate = useNavigate();
@@ -47,6 +47,8 @@ const Header = () => {
   const handleLogout = () => {
     // Token을 null로 설정하고, 사용자 이름도 null로 설정하여 로그아웃 처리하기
     setUser({ isLoggedIn: false, token: null, username: null });
+    localStorage.clear();
+    navigate("/");
     console.log("로그아웃 되었습니다.");
   };
 

@@ -14,12 +14,12 @@ export const signUpModalState = atom({
 export const userState1 = atom({
   key: "userState1",
   default: {
-    isLoggedIn: false,
-    token: null,
-    refresh_token: null,
-    username: null,
-    email: null,
-    userId: null,
+    isLoggedIn: localStorage.getItem("access_token") !== null, // 토큰이 있다면 로그인 상태로 간주
+    token: localStorage.getItem("access_token"),
+    refresh_token: localStorage.getItem("refresh_token"),
+    username: localStorage.getItem("username"),      // username 가져오기
+    email: localStorage.getItem("email"),            // email 가져오기
+    userId: localStorage.getItem("userId"),  
   },
 });
 
