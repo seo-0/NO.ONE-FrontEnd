@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import { useRecoilValue, useRecoilState } from "recoil";
 import { userState1, loginModalState } from "../../Data/state";
-import QaAll from "./QaAll";
 
 const QaPageContainer = styled.div`
   width: 100%;
@@ -45,7 +44,6 @@ const QaApp = () => {
         작성하고자 하는 문의글을 해당 폼에 맞추어 입력해주세요.
       </SubTitle>
       <QaPage />
-      <QaAll />
     </QaPageContainer>
   );
 };
