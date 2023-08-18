@@ -14,7 +14,7 @@ function EducationContentPage() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://13.209.49.229:8080/api/v1/content/${contentId}`
+          `https://www.techconnection.store:8080/api/v1/content/${contentId}`
         );
         setEducationContent(response.data.result);
       } catch (error) {

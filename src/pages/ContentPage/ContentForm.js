@@ -93,7 +93,7 @@ const ContentForm = () => {
 
     try {
       const response = await axios.post(
-        "http://13.209.49.229:8080/api/v1/content",
+        "https://www.techconnection.store:8080/api/v1/content",
         formData,
         {
           headers: {

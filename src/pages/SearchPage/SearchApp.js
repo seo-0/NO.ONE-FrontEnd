@@ -14,7 +14,7 @@ const SearchApp = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://13.209.49.229:8080/api/v1/content/search?keyword=${searchKeyword}`
+          `https://www.techconnection.store:8080/api/v1/content/search?keyword=${searchKeyword}`
         );
         setEducationList(response.data.result);
       } catch (error) {
@@ -25,19 +25,17 @@ const SearchApp = () => {
     fetchData();
   }, [searchKeyword]);
 
-// 마감 시간까지 남은 시간을 계산하는 함수
+  // 마감 시간까지 남은 시간을 계산하는 함수
   const getTimeRemaining = (deadline) => {
     const timeLeft = new Date(deadline) - new Date();
     const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
       (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  );
-    const minutes = Math.floor(
-      (timeLeft % (1000 * 60 * 60)) / (1000 * 60)
-  );
+    );
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
 
     return { days, hours, minutes };
-};
+  };
 
   // 마감 시간이 지났는지 확인하는 함수
   const isPastDeadline = (deadline) => {
@@ -77,7 +75,9 @@ const SearchApp = () => {
                 <span className="event">단기 이벤트</span>
               )}
               {isPastDeadline(content.deadLine) && (
-                <span className="event-closed">* 본 이벤트는 마감된 이벤트입니다.</span>
+                <span className="event-closed">
+                  * 본 이벤트는 마감된 이벤트입니다.
+                </span>
               )}
               <p className="content-company">[ {content.companyName} ]</p>
               <p className="content-title">{content.title}</p>

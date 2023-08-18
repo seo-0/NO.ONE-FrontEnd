@@ -39,7 +39,7 @@ function SignUpModal() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://13.209.49.229:8080/api/v1/phone/send-one",
+        "https://www.techconnection.store:8080/api/v1/phone/send-one",
         {
           phone: credentials.phone,
         }

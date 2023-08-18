@@ -49,11 +49,11 @@ const MyAsk = () => {
       try {
         const response = await axios.get(
           // 사용자가 작성한 게시글 불러오는 걸로 api 경로 수정
-          "http://13.209.49.229:8080/api/v1/inquiry/user",
+          "https://www.techconnection.store:8080/api/v1/inquiry/user",
           config
         );
-        console.log(response.data)
-;        setAsks(response.data);
+        console.log(response.data);
+        setAsks(response.data);
       } catch (error) {
         alert("회원 문의글 가져오기 실패");
         console.log(error);
