@@ -4,7 +4,7 @@
 	<img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=NO:ONE%20Project&fontSize=90" />	
 </div>
 <br/><br/>
-# 💻 해커톤
+<h2>💻 해커톤</h2>
 
 ## NO:ONE - 테크커넥션
 아무도 모르는 신기술 백과사전 : 노인을 위한, 노인과 하나된 삶 <br /><br />
