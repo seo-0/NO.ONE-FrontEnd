@@ -76,22 +76,6 @@
 	<img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white" />
 </div>
 
-## 목차
-
-- [프로젝트 소개](#프로젝트-소개)
-- [기능 목록](#기능-목록)
-- [프로젝트 세팅](#프로젝트-세팅)
-- [기술 스택](#기술-스택)
-- [스크린샷](#스크린샷)
-- [라이센스](#라이센스)
-
-
-## 기능 목록
-
-- 교육 컨텐츠 검색
-- 단기 이벤트 마감 알림
-- 사용자 로그인 기능
-
 
 ## 라이센스 
 MIT © [Team. TechConnection]
